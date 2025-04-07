@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsi8hol1xkpc8"]
+
+[ext_resource type="Theme" uid="uid://djm3pe3buk3lv" path="res://Graphics/Themes/UI_Default.tres" id="1_3i1b0"]
+[ext_resource type="Script" uid="uid://c1730towuct0l" path="res://Script/UI.cs" id="1_bpjw8"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_bpjw8")
+
+[node name="UIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_top = 20.0
+offset_right = -37.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme = ExtResource("1_3i1b0")
+
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer"]
+layout_mode = 0
+offset_left = -4.0
+offset_right = 42.0
+offset_bottom = 85.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Gold" type="Label" parent="UIContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Gold"
+
+[node name="Lives" type="Label" parent="UIContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lives"
+
+[node name="StartWave" type="Button" parent="UIContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://tthoy24122hb"]
+
+[ext_resource type="Script" uid="uid://t5p7bdtv658y" path="res://Script/Gameobjects/Enemy.cs" id="1_lepdn"]
+[ext_resource type="Texture2D" uid="uid://bpwwgw56xufwc" path="res://Graphics/Sprites/littleTank.png" id="2_5ogtn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ogtn"]
+
+[node name="Enemy" type="PathFollow2D"]
+script = ExtResource("1_lepdn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5ogtn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_5ogtn")

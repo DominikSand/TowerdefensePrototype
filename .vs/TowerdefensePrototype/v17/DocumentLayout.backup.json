@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Projects\\godot\\games\\first\\neues-spiel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DF67D570-9BED-400E-96D7-40434D981DEE}|TowerdefensePrototype.csproj|e:\\projects\\godot\\games\\first\\neues-spiel\\script\\gameobjects\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF67D570-9BED-400E-96D7-40434D981DEE}|TowerdefensePrototype.csproj|solutionrelative:script\\gameobjects\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF67D570-9BED-400E-96D7-40434D981DEE}|TowerdefensePrototype.csproj|e:\\projects\\godot\\games\\first\\neues-spiel\\script\\gameobjects\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF67D570-9BED-400E-96D7-40434D981DEE}|TowerdefensePrototype.csproj|solutionrelative:script\\gameobjects\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF67D570-9BED-400E-96D7-40434D981DEE}|TowerdefensePrototype.csproj|e:\\projects\\godot\\games\\first\\neues-spiel\\towerdefenseprototype.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DF67D570-9BED-400E-96D7-40434D981DEE}|TowerdefensePrototype.csproj|solutionrelative:towerdefenseprototype.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF67D570-9BED-400E-96D7-40434D981DEE}|TowerdefensePrototype.csproj|e:\\projects\\godot\\games\\first\\neues-spiel\\script\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF67D570-9BED-400E-96D7-40434D981DEE}|TowerdefensePrototype.csproj|solutionrelative:script\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "E:\\Projects\\godot\\games\\first\\neues-spiel\\Script\\Gameobjects\\Enemy.cs",
+              "RelativeDocumentMoniker": "Script\\Gameobjects\\Enemy.cs",
+              "ToolTip": "E:\\Projects\\godot\\games\\first\\neues-spiel\\Script\\Gameobjects\\Enemy.cs",
+              "RelativeToolTip": "Script\\Gameobjects\\Enemy.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T20:41:31.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Turret.cs",
+              "DocumentMoniker": "E:\\Projects\\godot\\games\\first\\neues-spiel\\Script\\Gameobjects\\Turret.cs",
+              "RelativeDocumentMoniker": "Script\\Gameobjects\\Turret.cs",
+              "ToolTip": "E:\\Projects\\godot\\games\\first\\neues-spiel\\Script\\Gameobjects\\Turret.cs",
+              "RelativeToolTip": "Script\\Gameobjects\\Turret.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T20:41:30.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TowerdefensePrototype",
+              "DocumentMoniker": "E:\\Projects\\godot\\games\\first\\neues-spiel\\TowerdefensePrototype.csproj",
+              "RelativeDocumentMoniker": "TowerdefensePrototype.csproj",
+              "ToolTip": "E:\\Projects\\godot\\games\\first\\neues-spiel\\TowerdefensePrototype.csproj",
+              "RelativeToolTip": "TowerdefensePrototype.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-07T20:40:17.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EnemySpawner.cs",
+              "DocumentMoniker": "E:\\Projects\\godot\\games\\first\\neues-spiel\\Script\\EnemySpawner.cs",
+              "RelativeDocumentMoniker": "Script\\EnemySpawner.cs",
+              "ToolTip": "E:\\Projects\\godot\\games\\first\\neues-spiel\\Script\\EnemySpawner.cs",
+              "RelativeToolTip": "Script\\EnemySpawner.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T20:40:13.171Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

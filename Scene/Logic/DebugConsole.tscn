@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://duyqtpplsd0lm"]
+
+[ext_resource type="Script" uid="uid://btb8qn4dbe863" path="res://Script/Logic/DebugConsole.cs" id="1_mwqv7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwqv7"]
+bg_color = Color(0.154876, 0.154876, 0.154876, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="FontVariation" id="FontVariation_mwqv7"]
+
+[node name="DebugConsole" type="CanvasLayer"]
+script = ExtResource("1_mwqv7")
+
+[node name="OuterMarginContainer" type="MarginContainer" parent="."]
+offset_right = 300.0
+offset_bottom = 82.0
+scale = Vector2(1, 0.83)
+
+[node name="Panel" type="Panel" parent="OuterMarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mwqv7")
+
+[node name="InnerMarginContainer" type="MarginContainer" parent="OuterMarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 12
+
+[node name="LogContainer" type="VBoxContainer" parent="OuterMarginContainer/InnerMarginContainer"]
+custom_minimum_size = Vector2(50, 62)
+layout_mode = 2
+
+[node name="LogEntryTemplate" type="RichTextLabel" parent="OuterMarginContainer/InnerMarginContainer/LogContainer"]
+custom_minimum_size = Vector2(150, 62)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/normal_font = SubResource("FontVariation_mwqv7")
+theme_override_font_sizes/normal_font_size = 12
+text = "Test"
