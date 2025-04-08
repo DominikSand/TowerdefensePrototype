@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ogtn"]
 
 [node name="Enemy" type="PathFollow2D"]
+loop = false
 script = ExtResource("1_lepdn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

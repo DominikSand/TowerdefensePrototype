@@ -13,14 +13,14 @@ public partial class EnemySpawner : Timer
 		{
 			throw new System.Exception("Node not found");
 		}
-		// Main imitiert , und wir fangen
+		// Main emitiert , und wir fangen Singal ein
 		_main.Connect(Main.SignalName.SpawnEnemies, new Callable(this, nameof(OnSpawnEnemy)));
 	}
 
 	public void OnSpawnEnemy()
 	{
 		var enemy = _enemyScene.Instantiate<PathFollow2D>();
-		enemy.Progress = 0.5f; // start at beginning of the path
+		//enemy.Progress = 0.5f; // start at beginning of the path
 		var path = GetParent(); // this is your Path2D
 		if (path is Path2D)
 		{

@@ -12,7 +12,7 @@ public partial class Enemy : PathFollow2D
 
 	[Signal]
 	public delegate void EnemyReachedGoalEventHandler(int damageTaken);
-	private int i = 0;
+	
 
 	public override void _Ready()
 	{
@@ -27,11 +27,10 @@ public partial class Enemy : PathFollow2D
 	/// <param name="delta"></param>
 	public override void _Process(double delta)
 	{
+		
 		var _currentPosition = Progress;
 		Progress = _currentPosition + (float)(Speed * delta);
-		GD.Print($"currentPosition: {_currentPosition}");
-		GD.Print($"progres: {Progress}");
-		//GD.Print(IsProcessing());
+
 		if (ProgressRatio >= 1.0f)
 		{
 			EmitSignal(SignalName.EnemyReachedGoal, Health);
