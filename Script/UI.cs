@@ -34,9 +34,9 @@ public partial class UI : CanvasLayer
         startWaveButton.Disabled = true;
     }
 
-    private void onSpawningChanged()
+    private void onSpawningChanged(bool isSpawning)
     {
-        if (!Gamestate.IsSpawning)
+        if (!isSpawning)
         {
             startWaveButton.Disabled = false;
         }

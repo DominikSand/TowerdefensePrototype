@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2xlsk7r5wjn"]
+[gd_scene load_steps=8 format=3 uid="uid://c2xlsk7r5wjn"]
 
 [ext_resource type="Script" uid="uid://dcpuv2vmoiw7q" path="res://Script/Main.cs" id="1_djkur"]
 [ext_resource type="PackedScene" uid="uid://cneb4ff6m0rjc" path="res://Scene/Logic/EnemyPath.tscn" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://tthoy24122hb" path="res://Scene/Gameobjects/Enemy.tscn" id="2_togfq"]
+[ext_resource type="Resource" uid="uid://d3pc2slv2rbg2" path="res://Resource/Logic/Gamestate.tres" id="3_h3nmf"]
 [ext_resource type="PackedScene" uid="uid://duyqtpplsd0lm" path="res://Scene/Logic/DebugConsole.tscn" id="4_h175a"]
 [ext_resource type="PackedScene" uid="uid://dsi8hol1xkpc8" path="res://Scene/ui.tscn" id="5_togfq"]
 [ext_resource type="PackedScene" uid="uid://c0mxr40pyd8uj" path="res://Scene/Logic/GameController.tscn" id="6_aan6j"]
@@ -10,6 +11,7 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_djkur")
 EnemyScene = ExtResource("2_togfq")
+Gamestate = ExtResource("3_h3nmf")
 
 [node name="EnemyPath" parent="." instance=ExtResource("1_glv2v")]
 
