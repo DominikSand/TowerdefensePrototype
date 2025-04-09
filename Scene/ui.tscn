@@ -1,19 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsi8hol1xkpc8"]
+[gd_scene load_steps=4 format=3 uid="uid://dsi8hol1xkpc8"]
 
 [ext_resource type="Theme" uid="uid://djm3pe3buk3lv" path="res://Graphics/Themes/UI_Default.tres" id="1_3i1b0"]
 [ext_resource type="Script" uid="uid://c1730towuct0l" path="res://Script/UI.cs" id="1_bpjw8"]
+[ext_resource type="Resource" uid="uid://d3pc2slv2rbg2" path="res://Resource/Logic/Gamestate.tres" id="2_lfpiq"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_bpjw8")
+Gamestate = ExtResource("2_lfpiq")
 
 [node name="UIContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -77.0
+offset_left = -120.0
 offset_top = 20.0
-offset_right = -37.0
+offset_right = -80.0
 offset_bottom = 60.0
 grow_horizontal = 0
 theme = ExtResource("1_3i1b0")

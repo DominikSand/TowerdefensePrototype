@@ -9,6 +9,9 @@ public partial class Main : Node2D
 	[Export] 
 	private PackedScene EnemyScene;
 
+	[Export]
+	public Gamestate GameState;
+	
 	[Signal]
 	public delegate void GameoverEventHandler();
 
@@ -23,7 +26,7 @@ public partial class Main : Node2D
 	{
 		_enemyPath = GetNode<Node2D>("EnemyPath");
 		_debugConsole = GetNode<DebugConsole>("DebugConsole");
-		_ui = GetNode<UI>("UI");
+		_ui = GetNode<UI>("UI"); 
 		// UI emitiert signal , wir reagieren darauf mit onWaveStarted
 		_ui.Connect(UI.SignalName.StartWave, new Callable(this, nameof(OnWaveStarted)));
 		// Main emitiert singal, ui muss reagieren.

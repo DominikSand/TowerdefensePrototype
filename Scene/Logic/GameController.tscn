@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0mxr40pyd8uj"]
+
+[ext_resource type="Script" uid="uid://b8yqoqy5ohr2t" path="res://Script/Logic/GameController.cs" id="1_43nf7"]
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_43nf7")

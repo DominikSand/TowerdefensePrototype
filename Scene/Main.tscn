@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2xlsk7r5wjn"]
+[gd_scene load_steps=7 format=3 uid="uid://c2xlsk7r5wjn"]
 
 [ext_resource type="Script" uid="uid://dcpuv2vmoiw7q" path="res://Script/Main.cs" id="1_djkur"]
 [ext_resource type="PackedScene" uid="uid://cneb4ff6m0rjc" path="res://Scene/Logic/EnemyPath.tscn" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://tthoy24122hb" path="res://Scene/Gameobjects/Enemy.tscn" id="2_togfq"]
 [ext_resource type="PackedScene" uid="uid://duyqtpplsd0lm" path="res://Scene/Logic/DebugConsole.tscn" id="4_h175a"]
 [ext_resource type="PackedScene" uid="uid://dsi8hol1xkpc8" path="res://Scene/ui.tscn" id="5_togfq"]
+[ext_resource type="PackedScene" uid="uid://c0mxr40pyd8uj" path="res://Scene/Logic/GameController.tscn" id="6_aan6j"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_djkur")
@@ -19,3 +20,5 @@ EnemyScene = ExtResource("2_togfq")
 [node name="DebugConsole" parent="." instance=ExtResource("4_h175a")]
 offset = Vector2(20, 20)
 transform = Transform2D(1, 0, 0, 1, 20, 20)
+
+[node name="GameController" parent="." instance=ExtResource("6_aan6j")]

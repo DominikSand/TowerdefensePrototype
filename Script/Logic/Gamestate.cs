@@ -1,69 +1,101 @@
 using Godot;
 using System;
 
-public partial class Gamestate : Node
+
+/// <summary>
+/// Class that holds state of game and emits events in case of changed
+/// </summary>
+[GlobalClass]
+public partial class Gamestate : Resource
 {
-	[Signal]
-	public delegate void LivesChangedEventHandler(int newLives);
+    [Signal]
+    public delegate void HitpointsChangedEventHandler(int newHitpoints);
 
-	[Signal]
-	public delegate void MoneyChangedEventHandler(int newMoney);
+    public int HitPoints
+    {
+        get { return _Hitpoints; }
+        set
+        {
+            if (_Hitpoints != value)
+            {
+                _Hitpoints = value;
+                EmitSignal(SignalName.HitpointsChanged, _Hitpoints);
+            }
+        }
+    }
 
-	[Signal]
-	public delegate void ScoreChangedEventHandler(int newScore);
 
-	[Signal]
-	public delegate void GameStateReadyEventHandler();
+    [Signal]
+    public delegate void MoneyChangedEventHandler(int newMoney);
 
-	public int Lives { get; private set; } = 10;
-	public int Money { get; private set; } = 100;
-	public int Score { get; private set; } = 0;
+    public int Money
+    {
+        get { return _Money; }
+        set
+        {
+            if (_Money != value)
+            {
+                _Money = value;
+                EmitSignal(SignalName.MoneyChanged, _Money);
+            }
+        }
+    }
 
-	public override void _Ready()
-	{
-		GD.Print("GameState ready.");
-	}
 
-	public void LoseLife(int amount = 1)
-	{
-		Lives -= amount;
-		EmitSignal(SignalName.LivesChanged, Lives);
+    [Signal]
+    public delegate void ScoreChangedEventHandler(int newScore);
 
-		GD.Print($"Life lost! Remaining lives: {Lives}");
+    public int Score
+    {
+        get => _score;
+        set
+        {
+            if (_score != value)
+            {
+                _score = value;
+                EmitSignal(SignalName.ScoreChanged, _score);
+            }
+        }
+    }
 
-		if (Lives <= 0)
-			GameOver();
-	}
+    [Signal]
+    public delegate void SpawningChangedEventHandler(bool value);
 
-	public void AddMoney(int amount)
-	{
-		Money += amount;
-		EmitSignal(SignalName.MoneyChanged, Money);
-	}
+    [Export]
+    public bool IsSpawning
+    {
+        get => _isSpawning;
+        set
+        {
+            if (_isSpawning != value)
+            {
+                _isSpawning = value;
+                EmitSignal(SignalName.SpawningChanged, _isSpawning);
+            }
+        }
+    }
 
-	public bool SpendMoney(int amount)
-	{
-		if (Money >= amount)
-		{
-			Money -= amount;
-			EmitSignal(SignalName.MoneyChanged, Money);
-			return true;
-		}
-
-		GD.Print("Not enough money!");
-		return false;
-	}
-
-	public void AddScore(int amount)
-	{
-		Score += amount;
-		EmitSignal(SignalName.ScoreChanged, Score);
-	}
-
-	private void GameOver()
-	{
-		GD.Print("Game Over!");
-		
-		// Handle game over logic here (pause, show menu, etc.)
-	}
+    
+    [Signal]
+    public delegate void WaveChangedEventHandler(int value);
+    
+    [Export]
+    public int CurrentWave
+    {
+        get => _currentWave;
+        set
+        {
+            if (_currentWave != value)
+            {
+                _currentWave = value;
+                EmitSignal(SignalName.WaveChanged, _currentWave);
+            }
+        }
+    }
+   
+    private int _currentWave = 0;
+    private int _Money = 0;
+    private int _score = 0;
+    private bool _isSpawning = false;
+    private int _Hitpoints = 1000;
 }
