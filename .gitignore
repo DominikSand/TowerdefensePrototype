@@ -1,3 +1,35 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+
+# Godot export templates
+export_presets.cfg
+export/
+
+# Rider / VS / VSCode
+.vs/
+.idea/
+.vscode/
+
+# C# / .NET build artifacts
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+project.assets.json
+
+# Godot Mono-specific
+.mono/
+mono_crash.*
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
