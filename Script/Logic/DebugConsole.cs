@@ -2,6 +2,8 @@ using Godot;
 
 public partial class DebugConsole : CanvasLayer
 {
+	[Export] public Gamestate Gamestate;
+
 	private MarginContainer _outerMarginContainer;
 	private Panel _background;
 	private MarginContainer _innerMarginContainer;
@@ -20,11 +22,16 @@ public partial class DebugConsole : CanvasLayer
 		_LogEntryTemplate = GetNode<RichTextLabel>("OuterMarginContainer/InnerMarginContainer/LogContainer/LogEntryTemplate");
 		_LogEntryTemplate.Text = "";
 		_outerMarginContainer.Hide();
-	}
+		GameEvents.Instance.Connect(GameEvents.SignalName.EnemyReachedGoal, new Callable(this, nameof(OnEnemyReachedGoal)));
+		GameEvents.Instance.Connect(GameEvents.SignalName.SpawnEnemies, new Callable(this, nameof(OnSpawnEnemies)));	
+    }
 
-	public void OnEnemyDied(int Gold)
+	public void OnEnemyDied(int Money)
 	{
-		Print($"Enemy died you gained {Gold} Gold ");
+		if (Money > 0)
+		{
+			Print($"");
+		}
 	}
 
 	public void OnEnemyReachedGoal(int Health)
@@ -37,8 +44,13 @@ public partial class DebugConsole : CanvasLayer
 		Print("You lost the game");
 	}
 
+	private void OnSpawnEnemies()
+    {
+        Print("Spawning enemies");
+    }
 
-	public void Print(string message)
+
+    public void Print(string message)
 	{
 		if (!_outerMarginContainer.Visible)
 		{

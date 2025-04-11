@@ -1,27 +1,29 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class GameController : Node
 {
     [Export] public Gamestate Gamestate;
 
+    [Signal]
+    public delegate void TriggerSpawnEventHandler();
+
     public override void _Ready()
     {
-
+        GameEvents.Instance.Connect(GameEvents.SignalName.StartWave, new Callable(this, nameof(StartWave)));
     }
 
-    public void StartWave()
+    public async void StartWave()
     {
         if (Gamestate.IsSpawning)
             return;
-
         Gamestate.CurrentWave += 1;
         Gamestate.IsSpawning = true;
-    }
-
-    public void OnSpawnerFinished()
-    {
+        GD.Print("Gamecontroller -> OnWaveStarted");
+        await SpawnWave(5);
         Gamestate.IsSpawning = false;
+        GameEvents.Instance.EmitSignal(GameEvents.SignalName.SpawningChanged, false);
     }
 
     public void LoseHitpoints(int amount)
@@ -52,4 +54,19 @@ public partial class GameController : Node
     {
         GD.Print("Game Over from Gamecontroller!");
     }
+
+    private async Task SpawnWave(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            await ToSignal(GetTree().CreateTimer(i * 0.5), SceneTreeTimer.SignalName.Timeout);
+            SpawnEnemy(i);
+        }
+    }
+
+    private void SpawnEnemy(int i)
+    {
+        EmitSignal(SignalName.TriggerSpawn);
+    }
+
 }

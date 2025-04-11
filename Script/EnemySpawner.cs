@@ -3,24 +3,24 @@ using Godot;
 public partial class EnemySpawner : Timer
 {
 	private PackedScene _enemyScene;
-	private Node2D _main;
+	private Node _gameController;
 
-	public override void _Ready()
+    [Export] public Gamestate Gamestate;
+
+    public override void _Ready()
 	{
 		_enemyScene = GD.Load<PackedScene>("res://Scene/Gameobjects/Enemy.tscn");
-		_main = GetNode<Node2D>("/root/Main");
-		if(_main == null)
+		_gameController = GetNode<Node>("../../GameController");
+		if(_gameController == null)
 		{
-			throw new System.Exception("Node not found");
+			throw new System.Exception("Gamecontroller Node not found");
 		}
-		// Main emitiert , und wir fangen Singal ein
-		_main.Connect(Main.SignalName.SpawnEnemies, new Callable(this, nameof(OnSpawnEnemy)));
+		_gameController.Connect("TriggerSpawn", new Callable(this, nameof(OnSpawnEnemy)));
 	}
 
 	public void OnSpawnEnemy()
 	{
 		var enemy = _enemyScene.Instantiate<PathFollow2D>();
-		//enemy.Progress = 0.5f; // start at beginning of the path
 		var path = GetParent(); // this is your Path2D
 		if (path is Path2D)
 		{

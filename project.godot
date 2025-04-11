@@ -15,6 +15,10 @@ run/main_scene="uid://c2xlsk7r5wjn"
 config/features=PackedStringArray("4.4", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalBus="*res://Script/GameEvents.cs"
+
 [debug]
 
 settings/stdout/print_fps=true

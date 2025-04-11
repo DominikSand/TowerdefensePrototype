@@ -3,14 +3,11 @@ using System;
 
 
 /// <summary>
-/// Class that holds state of game and emits events in case of changed
+/// Class that holds state of game
 /// </summary>
 [GlobalClass]
 public partial class Gamestate : Resource
 {
-    [Signal]
-    public delegate void HitpointsChangedEventHandler(int newHitpoints);
-
     public int HitPoints
     {
         get { return _Hitpoints; }
@@ -19,31 +16,9 @@ public partial class Gamestate : Resource
             if (_Hitpoints != value)
             {
                 _Hitpoints = value;
-                EmitSignal(SignalName.HitpointsChanged, _Hitpoints);
             }
         }
     }
-
-
-    [Signal]
-    public delegate void MoneyChangedEventHandler(int newMoney);
-
-    public int Money
-    {
-        get { return _Money; }
-        set
-        {
-            if (_Money != value)
-            {
-                _Money = value;
-                EmitSignal(SignalName.MoneyChanged, _Money);
-            }
-        }
-    }
-
-
-    [Signal]
-    public delegate void ScoreChangedEventHandler(int newScore);
 
     public int Score
     {
@@ -53,15 +28,21 @@ public partial class Gamestate : Resource
             if (_score != value)
             {
                 _score = value;
-                EmitSignal(SignalName.ScoreChanged, _score);
             }
         }
     }
-
-    [Signal]
-    public delegate void SpawningChangedEventHandler(bool value);
-
-    [Export]
+    public int Money
+    {
+        get { return _Money; }
+        set
+        {
+            if (_Money != value)
+            {
+                _Money = value;
+                
+            }
+        }
+    }
     public bool IsSpawning
     {
         get => _isSpawning;
@@ -70,16 +51,9 @@ public partial class Gamestate : Resource
             if (_isSpawning != value)
             {
                 _isSpawning = value;
-                EmitSignal(SignalName.SpawningChanged, _isSpawning);
             }
         }
     }
-
-    
-    [Signal]
-    public delegate void WaveChangedEventHandler(int value);
-    
-    [Export]
     public int CurrentWave
     {
         get => _currentWave;
@@ -88,7 +62,7 @@ public partial class Gamestate : Resource
             if (_currentWave != value)
             {
                 _currentWave = value;
-                EmitSignal(SignalName.WaveChanged, _currentWave);
+                
             }
         }
     }

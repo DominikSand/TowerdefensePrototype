@@ -12,8 +12,11 @@ public partial class UI : CanvasLayer
     private int gold = 0;
     private int lives = 10;
 
+
     [Signal]
     public delegate void StartWaveEventHandler();
+
+
 
 
     public override void _Ready()
@@ -24,12 +27,14 @@ public partial class UI : CanvasLayer
         goldLabel.Text = $"Gold: {Gamestate.Money}";
         livesLabel.Text = $"Lives:  {Gamestate.HitPoints}";
         startWaveButton.Pressed += OnStartWave;
-        Gamestate.Connect(Gamestate.SignalName.SpawningChanged, new Callable(this, nameof(onSpawningChanged)));
-        Gamestate.Connect(Gamestate.SignalName.MoneyChanged, new Callable(this, nameof(onEarnedMoney)));
+        GameEvents.Instance.Connect(GameEvents.SignalName.SpawningChanged, new Callable(this, nameof(onSpawningChanged)));
+        GameEvents.Instance.Connect(GameEvents.SignalName.MoneyChanged, new Callable(this, nameof(onEarnedMoney)));
+        GameEvents.Instance.Connect(GameEvents.SignalName.EnemyReachedGoal, new Callable(this, nameof(onEnemyReachedGoal)));
     }
 
     private void OnStartWave()
     {
+        GameEvents.Instance.EmitSignal(GameEvents.SignalName.StartWave);
         Gamestate.IsSpawning = true;
         startWaveButton.Disabled = true;
     }

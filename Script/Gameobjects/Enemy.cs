@@ -6,11 +6,7 @@ public partial class Enemy : PathFollow2D
 	[Export] public int Health = 10;
 	[Export] public int Reward = 15;
 
-	[Signal]
-	public delegate void EnemyDiedEventHandler(int reward);
-
-	[Signal]
-	public delegate void EnemyReachedGoalEventHandler(int damageTaken);
+	
 	
 
 	public override void _Ready()
@@ -32,7 +28,7 @@ public partial class Enemy : PathFollow2D
 
 		if (ProgressRatio >= 1.0f)
 		{
-			EmitSignal(SignalName.EnemyReachedGoal, Health);
+			GameEvents.Instance.EmitSignal(GameEvents.SignalName.EnemyReachedGoal, Health);
 			// Todo: Death animation ?
 			QueueFree();
 		}
@@ -43,7 +39,7 @@ public partial class Enemy : PathFollow2D
 		Health -= amount;
 		if (Health <= 0)
 		{
-			EmitSignal(SignalName.EnemyDied, Reward);
+			GameEvents.Instance.EmitSignal(GameEvents.SignalName.EnemyDied, Reward);
 			// Todo: Death Animation ?
 			QueueFree();
 		}
