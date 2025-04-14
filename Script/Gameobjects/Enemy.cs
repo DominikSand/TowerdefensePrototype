@@ -1,4 +1,6 @@
 using Godot;
+using static Godot.PathFollow3D;
+using static Godot.XRServer;
 
 public partial class Enemy : PathFollow2D
 {
@@ -6,15 +8,14 @@ public partial class Enemy : PathFollow2D
 	[Export] public int Health = 10;
 	[Export] public int Reward = 15;
 
-	
-	
+    private AnimatedSprite2D animatedSprite;
 
-	public override void _Ready()
+
+    public override void _Ready()
 	{
-	/*	Connect(Enemy.SignalName.EnemyDied, new Callable(_debugConsole, nameof(DebugConsole.OnEnemyDied)));
-		Connect(Enemy.SignalName.EnemyDied, new Callable(_ui, nameof(UI.onEnemyDied)));
-		Connect(Enemy.SignalName.EnemyReachedGoal, new Callable(_debugConsole, nameof(DebugConsole.OnEnemyReachedGoal)));*/
-	}
+        animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        animatedSprite.Play("Drive");      
+    }
 
 	/// <summary>
 	/// If enemy reaches goal damage is taken corresponding to the amount of Health
@@ -26,7 +27,7 @@ public partial class Enemy : PathFollow2D
 		var _currentPosition = Progress;
 		Progress = _currentPosition + (float)(Speed * delta);
 
-		if (ProgressRatio >= 1.0f)
+        if (ProgressRatio >= 1.0f)
 		{
 			GameEvents.Instance.EmitSignal(GameEvents.SignalName.EnemyReachedGoal, Health);
 			// Todo: Death animation ?
