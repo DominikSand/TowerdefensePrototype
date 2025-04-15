@@ -20,7 +20,8 @@ Gamestate = ExtResource("3_h3nmf")
 [node name="UI" parent="." instance=ExtResource("5_togfq")]
 
 [node name="DebugConsole" parent="." instance=ExtResource("4_h175a")]
-offset = Vector2(20, 20)
-transform = Transform2D(1, 0, 0, 1, 20, 20)
+offset = Vector2(20, 550)
+transform = Transform2D(1, 0, 0, 1, 20, 550)
+Gamestate = ExtResource("3_h3nmf")
 
 [node name="GameController" parent="." instance=ExtResource("6_aan6j")]

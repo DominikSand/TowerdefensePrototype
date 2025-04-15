@@ -7,7 +7,6 @@ public partial class UI : CanvasLayer
 
     private Button startWaveButton;
     private Label goldLabel;
-    private Label livesLabel;
     private int currentWave = 0;
     private int gold = 0;
     private int lives = 10;
@@ -21,11 +20,9 @@ public partial class UI : CanvasLayer
 
     public override void _Ready()
     {
-        startWaveButton = GetNode<Button>("UIContainer/MarginContainer/VBoxContainer/StartWave");
-        goldLabel = GetNode<Label>("UIContainer/MarginContainer/VBoxContainer/Gold");
-        livesLabel = GetNode<Label>("UIContainer/MarginContainer/VBoxContainer/Lives");
-        goldLabel.Text = $"Gold: {Gamestate.Money}";
-        livesLabel.Text = $"Lives:  {Gamestate.HitPoints}";
+        startWaveButton = GetNode<Button>("UIContainer/MarginContainer/VBoxContainer/Start/StartWave");
+        goldLabel = GetNode<Label>("UIContainer/MarginContainer/VBoxContainer/Gold/GoldLabel");
+        goldLabel.Text = $"Gold: {Gamestate.Money}";      
         startWaveButton.Pressed += OnStartWave;
         GameEvents.Instance.Connect(GameEvents.SignalName.SpawningChanged, new Callable(this, nameof(onSpawningChanged)));
         GameEvents.Instance.Connect(GameEvents.SignalName.MoneyChanged, new Callable(this, nameof(onEarnedMoney)));
@@ -57,7 +54,6 @@ public partial class UI : CanvasLayer
     public void onEnemyReachedGoal(int Health)
     {
         Gamestate.HitPoints -= Health;
-        livesLabel.Text = $"Hitpoints: {Gamestate.HitPoints}";
     }
 
     public void OnGameOver()

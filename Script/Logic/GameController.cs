@@ -12,6 +12,7 @@ public partial class GameController : Node
     public override void _Ready()
     {
         GameEvents.Instance.Connect(GameEvents.SignalName.StartWave, new Callable(this, nameof(StartWave)));
+        GameEvents.Instance.Connect(GameEvents.SignalName.EnemyReachedGoal, new Callable(this, nameof(LoseHitpoints)));
     }
 
     public async void StartWave()
@@ -31,6 +32,7 @@ public partial class GameController : Node
         Gamestate.HitPoints -= amount;
         if (Gamestate.HitPoints <= 0)
             GameOver();
+        GameEvents.Instance.EmitSignal(GameEvents.SignalName.HitpointsChanged, amount);
     }
 
     public void AddMoney(int amount)
