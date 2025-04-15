@@ -31,16 +31,13 @@ public partial class Hpbar : Control
 
     private void UpdateBar()
     {
-        // Shorten Hp Bar
         float ratio = (float)_currentHp / _maxHp;
-        /*var scale = CurrentHpBar.Scale;
-        scale.X = ratio;
-        CurrentHpBar.Scale = scale;*/
-
         var fullSize = CurrentHpBar.Texture.GetSize();
         var newWidth = fullSize.X * ratio;
 
-        // Cut Hp Bar from Right to Left
+        // Cut Hp Bar from Right to Left 
+        // Coordninates need to be this way because inner hp bar starts at 0,12  in the Texture file.
+        // The texture covers about 12 additional pixel therefore offset is 24
         CurrentHpBar.RegionRect = new Rect2(0, 12, newWidth, 24);
     }
 
