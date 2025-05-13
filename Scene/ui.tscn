@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsi8hol1xkpc8"]
+[gd_scene load_steps=7 format=3 uid="uid://dsi8hol1xkpc8"]
 
 [ext_resource type="Theme" uid="uid://djm3pe3buk3lv" path="res://Graphics/Themes/UI_Default.tres" id="1_3i1b0"]
 [ext_resource type="Script" uid="uid://c1730towuct0l" path="res://Script/UI.cs" id="1_bpjw8"]
 [ext_resource type="Resource" uid="uid://d3pc2slv2rbg2" path="res://Resource/Logic/Gamestate.tres" id="2_lfpiq"]
 [ext_resource type="Script" uid="uid://dp3w5ik31wewi" path="res://Script/Gameobjects/Hpbar.cs" id="4_ls17r"]
 [ext_resource type="Texture2D" uid="uid://b24t1jlrxm8y7" path="res://Graphics/Sprites/Hpbar.png" id="4_urowa"]
+[ext_resource type="Script" uid="uid://cnu3mgj1s1f7m" path="res://Script/Control/BuildControl.cs" id="6_thkpk"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_bpjw8")
@@ -65,3 +66,31 @@ layout_mode = 2
 [node name="StartWave" type="Button" parent="UIContainer/MarginContainer/VBoxContainer/Start"]
 layout_mode = 2
 text = "Start"
+
+[node name="BuildControl" type="Control" parent="." node_paths=PackedStringArray("_buildButton", "_buildPopupMenu")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1037.0
+offset_top = 35.0
+offset_right = 1077.0
+offset_bottom = 75.0
+script = ExtResource("6_thkpk")
+_buildButton = NodePath("BuildContainer/BuildButtons/BuildTower")
+_buildPopupMenu = NodePath("BuildContainer/BuildButtons/BuildPopupMenu")
+
+[node name="BuildContainer" type="VBoxContainer" parent="BuildControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BuildButtons" type="HBoxContainer" parent="BuildControl/BuildContainer"]
+layout_mode = 2
+
+[node name="BuildTower" type="Button" parent="BuildControl/BuildContainer/BuildButtons"]
+layout_mode = 2
+text = "Build Tower"
+
+[node name="BuildPopupMenu" type="PopupMenu" parent="BuildControl/BuildContainer/BuildButtons"]
+initial_position = 1
+visible = true
+unfocusable = true

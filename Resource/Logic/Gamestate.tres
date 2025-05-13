@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d3pc2slv2rbg2"]
+[gd_resource type="Resource" script_class="Gamestate" load_steps=2 format=3 uid="uid://d3pc2slv2rbg2"]
 
 [ext_resource type="Script" uid="uid://dqqexy83wrvyj" path="res://Script/Logic/Gamestate.cs" id="1_wlxdb"]
 

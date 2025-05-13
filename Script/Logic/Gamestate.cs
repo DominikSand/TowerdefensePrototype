@@ -68,7 +68,7 @@ public partial class Gamestate : Resource
     }
    
     private int _currentWave = 0;
-    private int _Money = 0;
+    private int _Money = 500;
     private int _score = 0;
     private bool _isSpawning = false;
     private int _Hitpoints = 1000;
