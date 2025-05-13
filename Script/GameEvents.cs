@@ -35,6 +35,9 @@ public partial class GameEvents : Node
     public delegate void SpawningChangedEventHandler(bool value);
     [Signal]
     public delegate void WaveChangedEventHandler(int value);
+    [Signal]
+    public delegate void GameOverEventHandler();
+
 
     #endregion
 

@@ -54,7 +54,7 @@ public partial class GameController : Node
 
     public void GameOver()
     {
-        GD.Print("Game Over from Gamecontroller!");
+        GameEvents.Instance.EmitSignal(GameEvents.SignalName.GameOver);
     }
 
     private async Task SpawnWave(int count)
