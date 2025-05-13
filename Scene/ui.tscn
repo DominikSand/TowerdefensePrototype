@@ -52,12 +52,13 @@ layout_mode = 2
 
 [node name="Hitpoints" type="Label" parent="UIContainer/MarginContainer/VBoxContainer/Hpbar"]
 layout_mode = 2
-text = "Lives"
+text = "Hitpoints "
 
-[node name="Hpbar" type="Control" parent="UIContainer/MarginContainer/VBoxContainer/Hpbar"]
+[node name="Hpbar" type="Control" parent="UIContainer/MarginContainer/VBoxContainer/Hpbar" node_paths=PackedStringArray("HpNumber")]
 layout_mode = 2
 script = ExtResource("4_ls17r")
 Gamestate = ExtResource("2_lfpiq")
+HpNumber = NodePath("HpNumber")
 
 [node name="Background" type="Sprite2D" parent="UIContainer/MarginContainer/VBoxContainer/Hpbar/Hpbar"]
 position = Vector2(0, 8)
@@ -72,6 +73,15 @@ texture = ExtResource("4_urowa")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 12, 128, 12)
+
+[node name="HpNumber" type="Label" parent="UIContainer/MarginContainer/VBoxContainer/Hpbar/Hpbar"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 15.0
+offset_right = 115.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 9
+text = "1000/ 1000"
 
 [node name="Start" type="HBoxContainer" parent="UIContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

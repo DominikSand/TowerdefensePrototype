@@ -4,6 +4,7 @@ using System;
 public partial class Hpbar : Control
 {
     [Export] private Gamestate Gamestate;
+    [Export] private Label HpNumber;
     private int _maxHp;
     private int _currentHp;
 
@@ -15,6 +16,7 @@ public partial class Hpbar : Control
         _currentHp = Gamestate.HitPoints;
         CurrentHpBar = GetNode<Sprite2D>("CurrentHp");
         GameEvents.Instance.Connect(GameEvents.SignalName.HitpointsChanged, new Callable(this, nameof(TakeDamage)));
+        HpNumber.Text = $"{_currentHp}/{_maxHp}";
     }
 
     /// <summary>
@@ -32,6 +34,7 @@ public partial class Hpbar : Control
     private void UpdateBar()
     {
         float ratio = (float)_currentHp / _maxHp;
+        HpNumber.Text = $"{_currentHp}/{_maxHp}";
         var fullSize = CurrentHpBar.Texture.GetSize();
         var newWidth = fullSize.X * ratio;
 
