@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 public partial class GameController : Node
 {
     [Export] public Gamestate Gamestate;
+    [Export] private TowerManager TowerManager;
 
     [Signal]
     public delegate void TriggerSpawnEventHandler();
@@ -13,6 +14,13 @@ public partial class GameController : Node
     {
         GameEvents.Instance.Connect(GameEvents.SignalName.StartWave, new Callable(this, nameof(StartWave)));
         GameEvents.Instance.Connect(GameEvents.SignalName.EnemyReachedGoal, new Callable(this, nameof(LoseHitpoints)));
+        GameEvents.Instance.Connect(GameEvents.SignalName.TowerToPlaceSelected, new Callable(this, nameof(TowerToPlaceSelected)));
+    }
+
+    private void TowerToPlaceSelected(string towerType)
+    {
+        // check if sufficent money here or maybe even consider grey out option
+        TowerManager.PlaceTower(towerType);
     }
 
     public async void StartWave()

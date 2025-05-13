@@ -5,10 +5,14 @@ public partial class Turret : Area2D
 {
 	[Export] public float FireRate = 1.0f;
 	private float _cooldown = 0.0f;
+    private PackedScene projectileScene;
+    private const string ProjectilePath = "res://Scene/Gameobjects/Projectile.tscn";
+    public override void _Ready()
+    {
+        projectileScene = GD.Load<PackedScene>(ProjectilePath);
+    }
 
-	private const string ProjectilePath = "res://Scene/Gameobjects/Projectile.tscn";
-
-	public override void _Process(double delta)
+    public override void _Process(double delta)
 	{
 		_cooldown -= (float)delta;
 
@@ -37,8 +41,7 @@ public partial class Turret : Area2D
 
 	private void FireAt(Node2D enemy)
 	{
-		var projectileScene = GD.Load<PackedScene>(ProjectilePath);
-		var projectile = projectileScene.Instantiate() as Node2D;
+		var projectile = projectileScene.Instantiate<Node2D>();
 
 		if (projectile == null)
 			return;

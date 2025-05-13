@@ -12,9 +12,9 @@ public partial class BuildControl : Control
     {
         _buildPopupMenu.Visible = false;
         // Populate the popup menu
-        _buildPopupMenu.AddItem("Option 1", 1);
-        _buildPopupMenu.AddItem("Option 2", 2);
-        _buildPopupMenu.AddItem("Option 3", 3);
+        _buildPopupMenu.AddItem("Cannon Turret", 1);
+        _buildPopupMenu.AddItem("Antiair Turret", 2);
+        _buildPopupMenu.AddItem("Chaingun Turret", 3);
 
         // Connect signals
         _buildButton.Pressed += OnButtonPressed;
@@ -31,13 +31,13 @@ public partial class BuildControl : Control
         switch (id)
         {
             case 1:
-                GD.Print("Option 1 selected");
+                GameEvents.Instance.EmitSignal(GameEvents.SignalName.TowerToPlaceSelected, "Cannon Turret");
                 break;
             case 2:
-                GD.Print("Option 2 selected");
+                GameEvents.Instance.EmitSignal(GameEvents.SignalName.TowerToPlaceSelected, "Antiair Turret");
                 break;
             case 3:
-                GD.Print("Option 3 selected");
+                GameEvents.Instance.EmitSignal(GameEvents.SignalName.TowerToPlaceSelected, "Chaingun Turret");
                 break;
         }
     }

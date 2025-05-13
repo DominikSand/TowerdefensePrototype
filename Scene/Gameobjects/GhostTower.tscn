@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://sdk8fdi1uq2e"]
+
+[ext_resource type="Texture2D" uid="uid://d3qxemwilf5ph" path="res://Graphics/Sprites/Ghosttower.png" id="1_w11tt"]
+
+[node name="GhostTower" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_w11tt")

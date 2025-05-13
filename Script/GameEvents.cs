@@ -19,6 +19,8 @@ public partial class GameEvents : Node
     public delegate void StartWaveEventHandler();
     [Signal]
     public delegate void SpawnEnemiesEventHandler();
+    [Signal]
+    public delegate void TowerToPlaceSelectedEventHandler(string towerType);
 
     #endregion
 

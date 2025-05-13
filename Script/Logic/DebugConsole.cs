@@ -24,6 +24,7 @@ public partial class DebugConsole : CanvasLayer
 		_outerMarginContainer.Hide();
 		GameEvents.Instance.Connect(GameEvents.SignalName.EnemyReachedGoal, new Callable(this, nameof(OnEnemyReachedGoal)));
 		GameEvents.Instance.Connect(GameEvents.SignalName.SpawnEnemies, new Callable(this, nameof(OnSpawnEnemies)));	
+		GameEvents.Instance.Connect(GameEvents.SignalName.GameOver, new Callable(this, nameof(OnGameOver)));
     }
 
 	public void OnEnemyDied(int Money)

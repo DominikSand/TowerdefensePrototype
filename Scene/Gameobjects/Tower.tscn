@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3nct5ull570i"]
+[gd_scene load_steps=4 format=3 uid="uid://b3nct5ull570i"]
 
 [ext_resource type="Script" uid="uid://msid55kjr0jr" path="res://Script/Gameobjects/Turret.cs" id="1_cnumx"]
+[ext_resource type="Texture2D" uid="uid://bl0mvsn2j85tg" path="res://Graphics/Sprites/CannonTower.png" id="2_imhwt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yonc7"]
+size = Vector2(100, 100)
 
 [node name="Turret" type="Area2D"]
 script = ExtResource("1_cnumx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_imhwt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yonc7")

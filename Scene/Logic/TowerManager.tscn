@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceve46en2jpd0"]
+
+[ext_resource type="Script" uid="uid://c4qgfrd42edj3" path="res://Script/Logic/TowerManager.cs" id="1_w2l16"]
+[ext_resource type="PackedScene" uid="uid://cgu5nr4xi2ab4" path="res://Scene/UI/TowerPlacer.tscn" id="2_aj127"]
+
+[node name="TowerManager" type="Node"]
+script = ExtResource("1_w2l16")
+
+[node name="TowerPlacer" parent="." instance=ExtResource("2_aj127")]
