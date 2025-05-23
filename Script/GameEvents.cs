@@ -40,8 +40,14 @@ public partial class GameEvents : Node
     [Signal]
     public delegate void GameOverEventHandler();
 
-
     #endregion
+
+    #region GameControllerEvents
+
+    [Signal]
+    public delegate void NotEnoughMoneyToBuildTowerEventHandler();
+    #endregion
+
 
     #region EnemyEvents
 

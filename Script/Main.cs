@@ -21,7 +21,7 @@ public partial class Main : Node2D
         _enemyPath = GetNode<Node2D>("EnemyPath");
         _ui = GetNode<UI>("UI");
         // Main emitiert singal, ui muss reagieren.
-        Connect(SignalName.Gameover, new Callable(_ui, nameof(UI.OnGameOver)));
+        Connect(SignalName.Gameover, new Callable(_ui, nameof(UI.onGameOver)));
         AddToGroup("game");
     }
 

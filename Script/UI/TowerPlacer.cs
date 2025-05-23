@@ -1,11 +1,18 @@
 using Godot;
 using System;
 
-public partial class TowerPlacer : Node2D
+public partial class TowerPlacer : Node
 {
+    [Export]
+    public Gamestate Gamestate; // Reference to the game state
     private Node2D _ghostInstance; // The ghost instance of the tower being placed
     private PackedScene _actualTower; // The actual tower scene to be placed
     private bool _isPlacing = false;
+
+    public override void _Ready()
+    {
+        base._Ready();
+    }
 
     public void Setup(PackedScene ghostScene, PackedScene actualScene)
     {
@@ -33,18 +40,23 @@ public partial class TowerPlacer : Node2D
 
     public override void _Input(InputEvent @event)
     {
-         if (!_isPlacing || _ghostInstance == null)
+        if (!_isPlacing || _ghostInstance == null)
             return;
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
         {
             if (mouseEvent.ButtonIndex == MouseButton.Left)
             {
-                PlaceTower();
-                GD.Print("Tower Placed");
+                if (PlaceTower())
+                {
+                    GD.Print("Tower Placed");
+                }
+                else
+                {
+                    GD.Print("Not enough money to place tower");
+                }
             }
             else if (mouseEvent.ButtonIndex == MouseButton.Right)
             {
-                //CancelPlacement();
                 GD.Print("Placing Canceled");
             }
             Cleanup();
@@ -60,19 +72,28 @@ public partial class TowerPlacer : Node2D
     }
 
 
-    private void PlaceTower()
+    private bool PlaceTower()
     {
         if (_ghostInstance == null || _actualTower == null)
-            return;
+            return false;
 
-        var towerInstance = _actualTower.Instantiate<Node2D>();
-        
-        towerInstance.Position = _ghostInstance.Position;
-        towerInstance.ZIndex = 1;
-
-        // Add to tower layer, could be GetParent(), or better: a dedicated tower container
-        var gameRoot = GetTree().Root.GetNode("Main"); // or whatever your main game scene is called
-        gameRoot.AddChild(towerInstance);
+        var towerInstance = _actualTower.Instantiate<Turret>();
+        if (Gamestate.Money < towerInstance.Price)
+        {
+            GameEvents.Instance.EmitSignal(GameEvents.SignalName.NotEnoughMoneyToBuildTower);
+            towerInstance.Free();
+            return false;
+        }
+        else
+        {
+            GameEvents.Instance.EmitSignal(GameEvents.SignalName.MoneyChanged, -towerInstance.Price);
+            towerInstance.Position = _ghostInstance.Position;
+            towerInstance.ZIndex = 1;
+            // Add to tower layer, could be GetParent(), or better: a dedicated tower container
+            var gameRoot = GetTree().Root.GetNode("Main");
+            gameRoot.AddChild(towerInstance);
+            return true;
+        }
     }
 
     private void Cleanup()

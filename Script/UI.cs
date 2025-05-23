@@ -12,8 +12,6 @@ public partial class UI : CanvasLayer
     private Label goldLabel;
 
     private int currentWave = 0;
-    private int gold = 0;
-    private int lives = 10;
 
 
     [Signal]
@@ -29,8 +27,8 @@ public partial class UI : CanvasLayer
         GameEvents.Instance.Connect(GameEvents.SignalName.SpawningChanged, new Callable(this, nameof(onSpawningChanged)));
         GameEvents.Instance.Connect(GameEvents.SignalName.MoneyChanged, new Callable(this, nameof(onEarnedMoney)));
         GameEvents.Instance.Connect(GameEvents.SignalName.EnemyReachedGoal, new Callable(this, nameof(onEnemyReachedGoal)));
-        GameEvents.Instance.Connect(GameEvents.SignalName.GameOver, new Callable(this, nameof(OnGameOver)));
-
+        GameEvents.Instance.Connect(GameEvents.SignalName.GameOver, new Callable(this, nameof(onGameOver)));
+        GameEvents.Instance.Connect(GameEvents.SignalName.NotEnoughMoneyToBuildTower, new Callable(this, nameof(onNotEnoughMoneyToBuildTower)));
     }
 
     private void OnStartWave()
@@ -60,9 +58,15 @@ public partial class UI : CanvasLayer
         GD.Print("UI -> Hitpoints Changed");
     }
 
-    public void OnGameOver()
+    public void onGameOver()
     {
         startWaveButton.Disabled = true;
         GD.Print("UI -> Gameover Received");
+    }
+
+    public void onNotEnoughMoneyToBuildTower()
+    {
+        GD.Print("UI -> Not enough money to build tower");
+        // Show a message or some UI feedback
     }
 }

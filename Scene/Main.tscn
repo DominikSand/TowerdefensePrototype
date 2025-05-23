@@ -143,8 +143,6 @@ pattern_0 = SubResource("TileMapPattern_hueuk")
 script = ExtResource("1_djkur")
 Gamestate = ExtResource("3_h3nmf")
 
-[node name="TowerManager" type="Node" parent="."]
-
 [node name="GameController" parent="." instance=ExtResource("6_aan6j")]
 
 [node name="Underground" type="TileMapLayer" parent="."]

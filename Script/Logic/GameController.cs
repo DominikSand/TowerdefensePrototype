@@ -15,6 +15,7 @@ public partial class GameController : Node
         GameEvents.Instance.Connect(GameEvents.SignalName.StartWave, new Callable(this, nameof(StartWave)));
         GameEvents.Instance.Connect(GameEvents.SignalName.EnemyReachedGoal, new Callable(this, nameof(LoseHitpoints)));
         GameEvents.Instance.Connect(GameEvents.SignalName.TowerToPlaceSelected, new Callable(this, nameof(TowerToPlaceSelected)));
+        GameEvents.Instance.Connect(GameEvents.SignalName.MoneyChanged, new Callable(this, nameof(OnMoneyChanged)));
     }
 
     private void TowerToPlaceSelected(string towerType)
@@ -43,22 +44,36 @@ public partial class GameController : Node
         GameEvents.Instance.EmitSignal(GameEvents.SignalName.HitpointsChanged, amount);
     }
 
-    public void AddMoney(int amount)
+    private void OnMoneyChanged(int amount)
+    { 
+        if(amount >= 0)
+        {
+            AddMoney(amount);
+        }
+        else
+        {
+           SpendMoney(amount);
+        }
+    }
+
+    private void AddMoney(int amount)
     {
         Gamestate.Money += amount;
     }
 
-    public bool SpendMoney(int amount)
+    private bool SpendMoney(int amount)
     {
         if (Gamestate.Money >= amount)
         {
-            Gamestate.Money -= amount;
+            Gamestate.Money += amount;
             return true;
         }
 
         GD.Print("Not enough money!");
         return false;
     }
+
+
 
     public void GameOver()
     {

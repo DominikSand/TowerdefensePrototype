@@ -3,8 +3,12 @@ using System;
 
 public partial class Turret : Area2D
 {
-	[Export] public float FireRate = 1.0f;
-	private float _cooldown = 0.0f;
+	[Export] 
+	public float FireRate = 1.0f;
+	public float Price = 100.0f;
+    private float _cooldown = 0.0f;
+
+
     private PackedScene projectileScene;
     private const string ProjectilePath = "res://Scene/Gameobjects/Projectile.tscn";
     public override void _Ready()
