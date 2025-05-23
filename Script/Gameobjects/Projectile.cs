@@ -24,7 +24,7 @@ public partial class Projectile : Area2D
         GlobalPosition += direction * Speed * (float)delta;
 
         // Projectile Connects with target
-        if (GlobalPosition.DistanceTo(Target.GlobalPosition) < 10f)
+        if (GlobalPosition.DistanceTo(Target.GlobalPosition) < 1f)
         {
             if (Target.GetParent() is Enemy enemy)
             {
