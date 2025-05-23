@@ -7,10 +7,12 @@
 size = Vector2(100, 100)
 
 [node name="Turret" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_cnumx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_imhwt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_yonc7")

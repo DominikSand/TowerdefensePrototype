@@ -9,12 +9,14 @@ public partial class Enemy : PathFollow2D
 	[Export] public int Reward = 15;
 
     private AnimatedSprite2D animatedSprite;
-
+	private StaticBody2D _hitbox;
 
     public override void _Ready()
 	{
+		_hitbox = GetNode<AnimatableBody2D>("AnimatableBody2D");
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        animatedSprite.Play("Drive");      
+        animatedSprite.Play("Drive");
+        AddToGroup("enemies");
     }
 
 	/// <summary>

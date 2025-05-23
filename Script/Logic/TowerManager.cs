@@ -18,9 +18,6 @@ public partial class TowerManager : Node
     public void PlaceTower(string TowerType)
     {
         GD.Print($"TowerManager -> PlaceTower: {TowerType}");
-        /*_towerPlacerInstance = TowerPlacer.Instantiate<TowerPlacer>();
-        // required to add the TowerPlacer to the scene tree , otherwise all changes called on the instance will be lost.
-        AddChild(_towerPlacerInstance);*/
         _towerPlacer.Setup(_ghostTower, _actualTower);
         _towerPlacer.StartPlacing();
     }
